@@ -1,0 +1,29 @@
+hash: 962abcd7a18a17c9bb3d86e230435ae3c27fd0070e431dce03f2de956b72766a
+updated: 2018-12-18T17:53:38.071783+08:00
+imports:
+- name: github.com/konsorten/go-windows-terminal-sequences
+  version: 5c8c8bd35d3832f5d134ae1e1e375b69a4d25242
+- name: github.com/lestrrat-go/file-rotatelogs
+  version: 3b4f34a036f374c18d604e1b8006d9fbb9593c06
+  subpackages:
+  - internal/option
+- name: github.com/lestrrat-go/strftime
+  version: 8b31f9c59b0feb56c456ce49a7b3d2b2e93a6f18
+- name: github.com/pkg/errors
+  version: 059132a15dd08d6704c67711dae0cf35ab991756
+- name: github.com/sirupsen/logrus
+  version: bcd833dfe83d3cebad139e4a29ed79cb2318bf95
+- name: golang.org/x/crypto
+  version: 505ab145d0a99da450461ae2c1a9f6cd10d1f447
+  repo: https://github.com/golang/crypto
+  vcs: git
+  subpackages:
+  - ssh/terminal
+- name: golang.org/x/sys
+  version: 2a47403f2ae58167c4d75973960ccc62b28cb0d8
+  repo: https://github.com/golang/sys
+  vcs: git
+  subpackages:
+  - unix
+  - windows
+testImports: []
