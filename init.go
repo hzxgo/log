@@ -28,12 +28,12 @@ func init() {
 	log.AddHook(NewLineHook(true))
 	log.SetLevel(logrus.DebugLevel)
 
-	// run as debug?
-	var debug bool
+	// run as debug(default is debug)?
+	debug := true
 	if len(os.Args) > 1 {
 		for _, arg := range os.Args[1:] {
-			if arg == "-debug" {
-				debug = true
+			if arg == "-nc" {
+				debug = false
 				break
 			}
 		}
