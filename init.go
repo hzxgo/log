@@ -63,7 +63,7 @@ func Init(isDebug bool, maxRolls uint32, filename string) {
 	}
 
 	if len(filename) > 0 {
-		logFilename := getLogFilename(filename)
+		logFilename := getLogFilename()
 		rotateLog, _ := rotatelogs.New(
 			logFilename+".%Y%m%d",
 			rotatelogs.WithLinkName(logFilename),
@@ -89,25 +89,15 @@ func isDirExists(path string) bool {
 	}
 }
 
-func getLogFilename(filename ...string) string {
-	var err error
-	var logFilename string
+func getLogFilename() string {
+	logFilename := DEFAULT_LOG_PATH + "/" + DEFAULT_LOG_FILENAME
 
-	if len(filename) == 0 {
-		logFilename = DEFAULT_LOG_PATH + "/" + DEFAULT_LOG_FILENAME
-	} else {
-		logFilename = filename[0]
-	}
-
-	if !filepath.IsAbs(logFilename) {
-		logFilename, err = filepath.Abs(logFilename)
-		if err != nil {
-			log.Errorf("get log filename abs failed | %v", err)
-		}
+	if root, err := filepath.Abs(os.Args[0]); err == nil {
+		logFilename = filepath.Dir(root) + "/log/" + DEFAULT_LOG_FILENAME
 	}
 
 	if path := filepath.Dir(logFilename); !isDirExists(path) {
-		if err := os.MkdirAll(path, 0744); err != nil {
+		if err := os.MkdirAll(path, 0755); err != nil {
 			log.Errorf("make dir all failed | %v", path, err)
 		}
 	}
