@@ -34,6 +34,7 @@ func init() {
 		for _, arg := range os.Args[1:] {
 			if arg == "-nc" {
 				debug = false
+				log.SetLevel(logrus.InfoLevel)
 				break
 			}
 		}
