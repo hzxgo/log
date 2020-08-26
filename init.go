@@ -79,6 +79,10 @@ func SetLevel(level logrus.Level) {
 	log.SetLevel(level)
 }
 
+func GetLevel() log.Level {
+	return log.GetLevel()
+}
+
 // ---------------------------------------------------------------------------------------------------------------------
 
 func isDirExists(path string) bool {
